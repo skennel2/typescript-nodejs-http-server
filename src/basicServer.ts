@@ -11,4 +11,3 @@ server.on('request', (request: http.IncomingMessage, response: http.ServerRespon
 });
 
 server.listen(8888);
-server
