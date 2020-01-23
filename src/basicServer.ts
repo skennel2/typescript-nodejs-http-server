@@ -11,5 +11,4 @@ server.on('request', (request: http.IncomingMessage, response: http.ServerRespon
 });
 
 server.listen(8888);
-
-console.log('port 8888 listen...');
+console.log('listening 8888 port...');
