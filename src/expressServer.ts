@@ -15,8 +15,6 @@ app.get("/hello", (request: Request, response: Response) => {
     response.end('<h1>hello</h1>');
 });
 
-//17 18 19 20
-
 app.route('/api')
     .get((request: Request, response: Response) => {
         response.json({
