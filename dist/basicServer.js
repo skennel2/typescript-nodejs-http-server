@@ -16,3 +16,4 @@ server.on('request', function (request, response) {
     response.end('<h1>' + request.url + '</h1>');
 });
 server.listen(8888);
+console.log('port 8888 listen...');

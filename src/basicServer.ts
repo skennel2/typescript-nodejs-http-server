@@ -7,7 +7,9 @@ server.on('request', (request: http.IncomingMessage, response: http.ServerRespon
         'Content-Type': 'text/html',
     });
 
-    response.end('<h1>' + request.url + '</h1>');
+    response.end('<h1>hello world</h1>');
 });
 
 server.listen(8888);
+
+console.log('port 8888 listen...');
