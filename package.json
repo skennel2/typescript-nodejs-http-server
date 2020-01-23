@@ -6,19 +6,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:tsc": "tsc",
-    "start:basic": "tsc && node ./dist/basicServer.js --watch",
-    "start:express": "tsc && node ./dist/expressServer.js --watch"
+    "start:basic": "tsc -w && node ./dist/basicServer.js",
+    "start:express": "tsc -w && node ./dist/expressServer.js",
+    "dev:basic": "tsc -w && nodemon ./dist/basicServer.js",
+    "dev:express": "tsc -w && nodemon ./dist/expressServer.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.2",
     "@types/node": "^13.1.8",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "nodemon": "^2.0.2"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "jade": "^1.11.0",
     "pug": "^2.0.4"
   }
 }
