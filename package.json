@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:tsc": "tsc",
-    "start:basic": "tsc -w && node ./dist/basicServer.js",
-    "start:express": "tsc -w && node ./dist/expressServer.js",
+    "start:basic": "tsc && node ./dist/basicServer.js",
+    "start:express": "tsc && node ./dist/expressServer.js",
     "dev:basic": "tsc -w && nodemon ./dist/basicServer.js",
     "dev:express": "tsc -w && nodemon ./dist/expressServer.js"
   },
@@ -20,7 +20,13 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express-session": "^1.15.16",
+    "@types/morgan": "^1.7.37",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "morgan": "^1.9.1",
     "pug": "^2.0.4"
   }
 }
