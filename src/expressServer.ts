@@ -1,8 +1,9 @@
-import express, { Response, Request } from 'express';
+import express, { Response, Request, response } from 'express';
 import { NextFunction } from 'connect';
 import path from 'path';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import session from 'express-session';
 
 var app = express();
 
@@ -23,6 +24,16 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
  * response와 repuest에 cookie 관련 속성과 메소드가 추가된다.
  */
 app.use(cookieParser());
+
+/**
+ * express-session 패키지
+ * request에 session 속성을 부여한다.
+ */
+app.use(session({
+    secret: 'secret key',
+    resave: false,
+    saveUninitialized: true
+}))
 
 /**
  * morgan 외부 미들웨어 
@@ -67,6 +78,22 @@ app.get("/clearcookie", (request: Request, response: Response) => {
     response.end('<h1>cookie clear</h1>');
 
 });
+
+app.get("/setsession", (request: Request, response: Response) => {
+    request.session!.now = new Date().toUTCString();
+
+    response.end('<h1>sesseion 설정</h1>');
+});
+
+app.get("/getsession", (request: Request, response: Response) => {
+    response.json(request.session);
+})
+
+app.get("/clearsession", (request: Request, response: Response) => {
+    request.session!.destroy(() => {
+        response.end('<h1>sesseion destroy</h1>');
+    });
+})
 
 /**
  * 전체 선택 라우팅 앞서 선언한 라우팅 처리에 해당하는것이 없으때 사용된다.

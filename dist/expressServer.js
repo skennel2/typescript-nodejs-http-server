@@ -7,6 +7,7 @@ var express_1 = __importDefault(require("express"));
 var path_1 = __importDefault(require("path"));
 var morgan_1 = __importDefault(require("morgan"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
+var express_session_1 = __importDefault(require("express-session"));
 var app = express_1.default();
 /**
  * 사용자 정의 미들웨어 사용
@@ -23,6 +24,15 @@ app.use(express_1.default.static(path_1.default.join(__dirname, '..', 'public'))
  * response와 repuest에 cookie 관련 속성과 메소드가 추가된다.
  */
 app.use(cookie_parser_1.default());
+/**
+ * express-session 패키지
+ * request에 session 속성을 부여한다.
+ */
+app.use(express_session_1.default({
+    secret: 'secret key',
+    resave: false,
+    saveUninitialized: true
+}));
 /**
  * morgan 외부 미들웨어
  * 로그 출력에 사용된다.
@@ -58,6 +68,18 @@ app.get("/getcookie", function (request, response) {
 app.get("/clearcookie", function (request, response) {
     response.clearCookie('cookie');
     response.end('<h1>cookie clear</h1>');
+});
+app.get("/setsession", function (request, response) {
+    request.session.now = new Date().toUTCString();
+    response.end('<h1>sesseion 설정</h1>');
+});
+app.get("/getsession", function (request, response) {
+    response.json(request.session);
+});
+app.get("/clearsession", function (request, response) {
+    request.session.destroy(function () {
+        response.end('<h1>sesseion destroy</h1>');
+    });
 });
 /**
  * 전체 선택 라우팅 앞서 선언한 라우팅 처리에 해당하는것이 없으때 사용된다.
