@@ -8,6 +8,7 @@
     "build:tsc": "tsc",
     "start:basic": "tsc && node ./dist/basicServer.js",
     "start:express": "tsc && node ./dist/expressServer.js",
+    "start:template": "tsc && node ./dist/templateEngine.js",
     "dev:basic": "tsc -w && nodemon ./dist/basicServer.js",
     "dev:express": "tsc -w && nodemon ./dist/expressServer.js"
   },

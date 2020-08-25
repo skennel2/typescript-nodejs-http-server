@@ -82,7 +82,7 @@ app.get("/clearsession", function (request, response) {
     });
 });
 /**
- * 전체 선택 라우팅 앞서 선언한 라우팅 처리에 해당하는것이 없으때 사용된다.
+ * 전체 선택 라우팅, 앞서 선언한 라우팅에 해당하는것이 없을 때 처리된다.
  */
 app.all("*", function (request, response) {
     response.end('<h1>전체 선택자</h1>');
